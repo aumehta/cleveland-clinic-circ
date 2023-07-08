@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.13.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-player": "^2.12.0",
+    "react-twitter-embed": "^4.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
