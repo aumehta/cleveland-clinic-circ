@@ -1,7 +1,6 @@
 import Button from "@mui/material/Button";
 import * as React from "react";
 import homepage from "./Photos/homepage.jpg";
-import group_pic from "./Photos/group_pic.jpeg";
 import ReactPlayer from "react-player";
 import clevelandLogo from "./Photos/clinicImage-removebg-preview.png";
 import {
@@ -20,27 +19,31 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 function Home() {
   const tagLine = {
     fontFamily: "sans-serif",
-    transform: "translate(10%, 20%)", // Adjust the text position using transform
-    width: "40%", // Adjust the width of the text block
+    width: "100%", // Adjust the width of the text block
     whiteSpace: "pre-wrap",
     zIndex: 2, // Set a higher z-index for the image to be above the text
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    marginTop: "20%", // Adjust the top margin as needed
   };
   const containerStyle = {
     display: "flex",
-    justifyContent: "flex-start",
-    width: "100%",
     margin: "0%",
-    overflow: "hidden", // Hide any content that extends beyond the container
-    height: "100vh",
+    flexDirection: "row",
+    alignItems: "flex-start", // Center horizontally,
+    height: "100vh", // Adjust the height as needed,
   };
   const videoContainerStyle = {
     flex: 1, // Fill remaining space
-    height: "65%", // Match the height of the image
+    height: "70%", // Match the height of the image
     position: "relative", // Add position relative
     display: "flex", // Use flexbox for centering the video
-    justifyContent: "flex-end", // Align to the right
-    alignItems: "flex-end", // Align to the top
+    justifyContent: "center", // Align to the right
     flexDirection: "column", // Align items vertically
+    alignItems: "center",
+    marginTop: "10%"
   };
 
   const videoStyle = {
@@ -49,20 +52,17 @@ function Home() {
     left: 0, // Align the video to the left of the container
     height: "100%", // Match the height of the container
     width: "100%", // Adjust the width of the video
-    transform: "translate(25%,25%)", // Move the video 50% to the right
     zIndex: 2, // Set a higher z-index for the image to be above the text
+    right: 0, // Adjust the right position to align the video on the right
+
   };
 
   const sourceStyle = {
-    position: "absolute", // Add position absolute
-    top: 0, // Align the video to the top of the container
-    left: 0, // Align the video to the left of the container
-    height: "100%", // Match the height of the container
-    width: "100%", // Adjust the width of the video
-   transform: "translate(50%,95%)", // Move the video 50% to the right
-    zIndex: 2, // Set a higher z-index for the image to be above the text
+    height: "100%",
+    zIndex: 2,
     fontFamily: "sans-serif",
-
+    marginTop: "50%", 
+    marginRight: "10%"
   };
 
   const imageStyle = {
@@ -75,8 +75,11 @@ function Home() {
   };
 
   const btnContainerStyle = {
-    marginTop: "20px", // Add top margin to move the button lower
-    transform: "translate(5%, 20%)", // Adjust the text position using transform
+    display: "flex",
+    justifyContent: "flex-start",
+    marginTop: "2%", // Add top margin to separate the button
+    zIndex: 2,
+    marginLeft: "5%",
   };
   const btnStyle = {
     textTransform: "unset !important",
@@ -117,46 +120,52 @@ function Home() {
   }, [isPlaying]);
 
   return (
-    <div>
+    <Grid container xs={12}>
       <div style={containerStyle}>
-        <div style={tagLine}>
-          <Typography
-            className="page-title"
-            variant="h2"
-            color="black"
-            sx={{
-              fontSize: "2.78rem",
-              fontWeight: 900,
-              px: "5%",
-              display: { xs: "none", sm: "block" },
-            }}
-          >
-            Using cutting-edge technology to combat cardiovascular disease
-          </Typography>
+        <img src={homepage} style={imageStyle} />
+        <Grid container xs={6} style={{ justifyContent: "flex-start" }}>
+          <div style={tagLine}>
+            <Typography
+              className="page-title"
+              variant="h2"
+              color="black"
+              sx={{
+                fontSize: "2.78rem",
+                fontWeight: 900,
+                px: "5%",
+                display: { xs: "none", sm: "block" },
+              }}
+            >
+              Using cutting-edge technology to combat cardiovascular disease
+            </Typography>
+          </div>
           <div style={btnContainerStyle}>
             <Button endIcon={<ArrowForwardIosIcon />} sx={btnStyle}>
               LEARN MORE
             </Button>
           </div>
-        </div>
-        <img src={homepage} style={imageStyle} />
-        <div style={videoContainerStyle}>
-          <ReactPlayer
-            onReady={onReady}
-            ref={playerRef}
-            playing={isPlaying}
-            url={"/clinicVideo.mp4"}
-            type="video/mp4"
-            controls={true}
-            style={videoStyle}
-            muted
-          />
-          <Typography variant = "h7" style = {sourceStyle} > Source: CNN </Typography>
-        </div>
+        </Grid>
+        <Grid container xs={6} style={{ justifyContent: "flex-end" }}>
+          <div style={videoContainerStyle}>
+            <ReactPlayer
+              onReady={onReady}
+              ref={playerRef}
+              playing={isPlaying}
+              url={"/clinicVideo.mp4"}
+              type="video/mp4"
+              controls={true}
+              style={videoStyle}
+              muted
+            />
+            <Typography variant="h7" style={sourceStyle}>
+              {" "}
+              Source: CNN{" "}
+            </Typography>
+          </div>
+        </Grid>
       </div>
-    </div>
+    </Grid>
   );
 }
 
 export default Home;
-
