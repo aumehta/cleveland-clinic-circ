@@ -16,7 +16,7 @@ import test from "./Photos/test.jpg";
 import test1 from "./Photos/test1.png";
 import { motion } from 'framer-motion';
 import arohi from "./Photos/arohi.JPG";
-
+import { Fade, Slide, Zoom } from "react-awesome-reveal";
 
 const imageStyle = {
   width: "100%",
@@ -25,7 +25,10 @@ const imageStyle = {
   zIndex: 1, // Set a higher z-index for the image to be above the text
   position: "absolute", // Add position absolute
   left: 0, // Align the image to the left side
+
 };
+
+
 
 const hrLine = {
   width: "60%",
@@ -73,14 +76,6 @@ const containerText = {
   color: "#D9D9D9",
 };
 
-const teamContainer = {
-    fontFamily: "sans-serif",
-    whiteSpace: "pre-wrap",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "flex-start",
-  };
 function About() {
   return (
     <Container maxWidth="xl">
@@ -100,8 +95,12 @@ function About() {
           >
             About Us
             <hr style={hrLine} />
-            We enable global innovation <br />
-            through collaboration
+            <Slide direction="left">
+    <div>
+      We enable global innovation <br/>
+      through collaboration
+    </div>
+  </Slide>
           </Typography>
         </div>
         <Divider variant="middle" sx={{ zIndex: 2 }} />
@@ -196,7 +195,9 @@ function About() {
             </Typography>
     </Grid>
   ))}
+  
 </Grid>
+
     </Container>
   );
 }

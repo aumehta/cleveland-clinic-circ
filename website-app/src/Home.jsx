@@ -15,6 +15,7 @@ import {
   CardContent,
 } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Fade, Slide, Zoom } from "react-awesome-reveal";
 
 function Home() {
   const tagLine = {
@@ -90,7 +91,7 @@ function Home() {
     px: "25px",
     border: "2px solid black", // Add border style
     "&:hover": {
-      backgroundColor: "#FFC582",
+      backgroundColor: "#ffffff",
     },
   };
 
@@ -125,6 +126,8 @@ function Home() {
         <img src={homepage} style={imageStyle} />
         <Grid container xs={6} style={{ justifyContent: "flex-start" }}>
           <div style={tagLine}>
+          <Slide direction="left">
+    <div>
             <Typography
               className="page-title"
               variant="h2"
@@ -138,6 +141,8 @@ function Home() {
             >
               Using cutting-edge technology to combat cardiovascular disease
             </Typography>
+            </div>
+  </Slide>
           </div>
           <div style={btnContainerStyle}>
             <Button endIcon={<ArrowForwardIosIcon />} sx={btnStyle}>
