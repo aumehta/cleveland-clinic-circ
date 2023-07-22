@@ -4,6 +4,8 @@ import Home from './Home';
 import About from './About';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import Research from './Research';
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
             <Routes >
               <Route path="/home" element={<Home />}/>
               <Route path="/about" element={<About />} />
+              <Route path="/research" element={<Research />} />
             </Routes>
           </div>
           <Footer />

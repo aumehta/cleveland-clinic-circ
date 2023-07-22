@@ -45,9 +45,11 @@ export default function NavBar() {
           
                 }
                }>
+                     <Link to='/research'>
                      <Button sx={{...btnStyle, px: "22px"}} >
                         Research 
                      </Button>
+                     </Link>
                      <Link to='/about'>
                      <Button sx={{...btnStyle, px: "22px"}}>
                         Lab Members
