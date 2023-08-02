@@ -10,8 +10,6 @@ import {
   CardContent,
   IconButton
 } from "@mui/material";
-import group_pic from "./Photos/group_photo.jpg";
-import test from "./Photos/test.jpg";
 import test1 from "./Photos/test1.png";
 import { motion } from "framer-motion";
 import { Fade, Slide, Zoom } from "react-awesome-reveal";
@@ -21,63 +19,23 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-
-const imageStyle = {
-  width: "100%",
-  height: "60%",
-  opacity: 0.5, // Adjusted to maintain aspect ratio
-  zIndex: 1, // Set a higher z-index for the image to be above the text
-  position: "absolute", // Add position absolute
-  left: 0, // Align the image to the left side
-};
-
-const hrLine = {
-  width: "60%",
-  marginRight: "40%",
-  borderTop: "3px solid #000000",
-  borderBottom: "3px solid #000000",
-};
-const tagLine = {
-  fontFamily: "sans-serif",
-  width: "100%", // Adjust the width of the text block
-  whiteSpace: "pre-wrap",
-  zIndex: 2, // Set a higher z-index for the image to be above the text
-  justifyContent: "center",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-  marginTop: "90px",
-};
-
-const grid = {
-  fontFamily: "sans-serif",
-  width: "100%", // Adjust the width of the text block
-  whiteSpace: "pre-wrap",
-  justifyContent: "center",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-};
-
-const containerStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "flex-start", // Center horizontally,
-  justifyContent: "center",
-  height: "60vh", // Adjust the height as needed,
-};
-const containerText = {
-  fontFamily: "sans-serif",
-  whiteSpace: "pre-wrap",
-  zIndex: 2, // Set a higher z-index for the image to be above the text
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "flex-start",
-  color: "#D9D9D9",
-};
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 function About() {
+
+  function RenderBio({ bio }) {
+    const paragraphs = bio.split("\n").map((line, index) => (
+      <p key={index}>{line}</p>
+    ));
+  
+    return <div>{paragraphs}</div>;
+  }
+  
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isPad = useMediaQuery(theme.breakpoints.down('md'));
+
   const [selectedResearcher, setSelectedResearcher] = useState(false); // Initialize to false
   const [selectedSheetIndex, setSelectedSheetIndex] = useState(0);
 
@@ -113,6 +71,52 @@ function About() {
       backgroundColor: "#ffffff",
     },
   };
+
+  const imageStyle = {
+    width: "100%",
+    height: isMobile ? "40%" : "60%",
+    opacity: 0.5, // Adjusted to maintain aspect ratio
+    zIndex: 1, // Set a higher z-index for the image to be above the text
+    position: "absolute", // Add position absolute
+    left: 0, // Align the image to the left side
+  };
+  
+  const hrLine = {
+    width: "60%",
+    marginRight: "40%",
+    borderTop: "3px solid #000000",
+    borderBottom: "3px solid #000000",
+  };
+  const tagLine = {
+    fontFamily: "sans-serif",
+    width: "100%", // Adjust the width of the text block
+    whiteSpace: "pre-wrap",
+    zIndex: 2, // Set a higher z-index for the image to be above the text
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    marginTop: isMobile? "20%" : "10%",
+  };
+    
+  const containerStyle = {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start", // Center horizontally,
+    justifyContent: "center",
+    height: isMobile ? "40vh":"60vh", // Adjust the height as needed,
+  };
+  const containerText = {
+    fontFamily: "sans-serif",
+    whiteSpace: "pre-wrap",
+    zIndex: 2, // Set a higher z-index for the image to be above the text
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    color: "#D9D9D9",
+  };
+  
   return (
     <Container maxWidth="xl">
       <div style={containerStyle}>
@@ -123,10 +127,12 @@ function About() {
             variant="h2"
             color="black"
             sx={{
-              fontSize: "3.4rem",
+              fontSize: {
+                xs: "1.75rem", // Font size for extra-small screens (less than 600px)
+                sm: "3.4rem", // Font size for small screens (600px and above)
+              },
               fontWeight: 900,
               px: "6%",
-              display: { xs: "none", sm: "block" },
             }}
           >
             About Us
@@ -158,10 +164,11 @@ function About() {
             variant="h5"
             color="black"
             sx={{
-              fontSize: "0.7 rem",
-              fontWeight: 400,
+              fontSize: {
+                xs: "0.75rem", // Font size for extra-small screens (less than 600px)
+                sm: "1.5rem", // Font size for small screens (600px and above)
+              },              fontWeight: 400,
               px: "3%",
-              display: { xs: "none", sm: "block" },
             }}
           >
             Lead by our director, Dr. Christopher Nguyen, Ph.D., we foster a
@@ -254,7 +261,7 @@ function About() {
                 height: "40vh",
                 marginTop: "20%",
                 textAlign: "center",
-                marginLeft: "20%",
+                marginLeft: (isMobile)? "5%" : "20%",
                 position: "relative",
                 overflow: "hidden",
               }}
@@ -347,10 +354,12 @@ function About() {
                 variant="h2"
                 color="black"
                 sx={{
-                  fontSize: "2rem",
-                  fontWeight: 900,
+                  fontSize: {
+                    xs: "1.4rem", // Font size for extra-small screens (less than 600px)
+                    sm: "2rem", // Font size for small screens (600px and above)
+                    // Add more entries for other breakpoints if needed
+                  },                  fontWeight: 900,
                   px: "5%",
-                  display: { xs: "none", sm: "block" },
                 }}
               >
                 {selectedResearcher.Name}
@@ -399,10 +408,9 @@ function About() {
                   fontSize: "1rem",
                   fontWeight: 400,
                   px: "5%",
-                  display: { xs: "none", sm: "block" },
                 }}
               >
-                {selectedResearcher.Bio}
+                <RenderBio bio = {selectedResearcher.Bio} /> 
               </Typography>
             </DialogContent>
           </div>

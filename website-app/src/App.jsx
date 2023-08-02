@@ -5,6 +5,8 @@ import About from './About';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import Research from './Research';
+import News from './News';
+
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
               <Route path="/home" element={<Home />}/>
               <Route path="/about" element={<About />} />
               <Route path="/research" element={<Research />} />
+              <Route path="/news" element={<News />} />
+
             </Routes>
           </div>
           <Footer />
