@@ -8,7 +8,7 @@ import {
   Divider,
   Stack,
   CardContent,
-  IconButton
+  IconButton,
 } from "@mui/material";
 import test1 from "./Photos/test1.png";
 import { motion } from "framer-motion";
@@ -23,24 +23,23 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
 function About() {
-
   function RenderBio({ bio }) {
-    const paragraphs = bio.split("\n").map((line, index) => (
-      <p key={index}>{line}</p>
-    ));
-  
+    const paragraphs = bio
+      .split("\n")
+      .map((line, index) => <p key={index}>{line}</p>);
+
     return <div>{paragraphs}</div>;
   }
-  
+
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isPad = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isPad = useMediaQuery(theme.breakpoints.down("md"));
 
   const [selectedResearcher, setSelectedResearcher] = useState(false); // Initialize to false
   const [selectedSheetIndex, setSelectedSheetIndex] = useState(0);
 
   const { data, loading, error } = useGoogleSheets({
-    apiKey: import.meta.env.VITE_GOOGLE_API_KEY, 
+    apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
     sheetId: import.meta.env.VITE__GOOGLE_SHEET_ID,
   });
 
@@ -55,7 +54,6 @@ function About() {
   const handleCloseModal = () => {
     setSelectedResearcher(false); // Set back to false to close the modal
   };
-
 
   if (loading) {
     return <div>Loading...</div>;
@@ -80,7 +78,7 @@ function About() {
     position: "absolute", // Add position absolute
     left: 0, // Align the image to the left side
   };
-  
+
   const hrLine = {
     width: "60%",
     marginRight: "40%",
@@ -96,15 +94,15 @@ function About() {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    marginTop: isMobile? "20%" : "10%",
+    marginTop: isMobile ? "20%" : "10%",
   };
-    
+
   const containerStyle = {
     display: "flex",
     flexDirection: "row",
     alignItems: "flex-start", // Center horizontally,
     justifyContent: "center",
-    height: isMobile ? "40vh":"60vh", // Adjust the height as needed,
+    height: isMobile ? "40vh" : "60vh", // Adjust the height as needed,
   };
   const containerText = {
     fontFamily: "sans-serif",
@@ -116,7 +114,7 @@ function About() {
     alignItems: "flex-start",
     color: "#D9D9D9",
   };
-  
+
   return (
     <Container maxWidth="xl">
       <div style={containerStyle}>
@@ -167,7 +165,8 @@ function About() {
               fontSize: {
                 xs: "0.75rem", // Font size for extra-small screens (less than 600px)
                 sm: "1.5rem", // Font size for small screens (600px and above)
-              },              fontWeight: 400,
+              },
+              fontWeight: 400,
               px: "3%",
             }}
           >
@@ -185,24 +184,22 @@ function About() {
       </div>
       <Grid container>
         <Grid item xs={6}>
-        <Button
+          <Button
             variant="h2"
             color="black"
             sx={{
-              fontSize: "1.8rem",
+              fontSize: isMobile ? "0.9rem" : "1.8rem",
               fontWeight: 900,
               px: "5%",
-              marginLeft: "10%",
-              display: { xs: "none", sm: "block" },
+              marginLeft: !isMobile ? "10%" : "0%",
             }}
             onClick={() => handleSheetButtonClick(0)} // Set the index for HomePage
-
           >
             Meet Our Team
           </Button>
         </Grid>
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <Button
+        <Button
             variant="contained"
             size="large"
             sx={{
@@ -212,11 +209,15 @@ function About() {
               "&:hover": {
                 backgroundColor: "#000000",
               },
+              fontSize: isMobile ? "0.6rem" : "1.3rem",
+              whiteSpace: "nowrap", 
+              overflow: "hidden",
+              width: isMobile? "180px" : "250px",
+              height: isMobile? "30px" : "100px"
             }}
             onClick={() => handleSheetButtonClick(1)} // Set the index for HomePage
-
           >
-            Chris's Lab 
+            Chris's Lab
           </Button>
           <Button
             variant="contained"
@@ -228,10 +229,15 @@ function About() {
               "&:hover": {
                 backgroundColor: "#000000",
               },
+              fontSize: isMobile ? "0.6rem" : "1.3rem",
+              whiteSpace: "nowrap", 
+              overflow: "hidden", 
+              width: isMobile? "180px" : "250px",
+              height: isMobile? "30px" : "100px"
             }}
             onClick={() => handleSheetButtonClick(2)} // Set the index for HomePage
           >
-            David's Lab 
+            David's Lab
           </Button>
           <Button
             variant="contained"
@@ -243,180 +249,186 @@ function About() {
               "&:hover": {
                 backgroundColor: "#000000",
               },
+              fontSize: isMobile ? "0.6rem" : "1.3rem",
+              whiteSpace: "nowrap", 
+              overflow: "hidden", 
+              width: isMobile? "180px" : "250px",
+              height: isMobile? "30px" : "100px"
             }}
           >
-            Debbie's Lab 
+            Debbie's Lab
           </Button>
         </Grid>
       </Grid>
       <Grid container spacing={2}>
-      {data[selectedSheetIndex].data.map((researcher, index) => (
-        <Grid item xs={12} sm={6} md={4} key={index}>
-          <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-            <Card
-              onClick={() => handleCardClick(researcher)}
-              sx={{
-                borderRadius: "50%",
-                width: "40vh",
-                height: "40vh",
-                marginTop: "20%",
-                textAlign: "center",
-                marginLeft: (isMobile)? "5%" : "20%",
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              <CardContent>
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    borderRadius: "50%",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img
-                    src={researcher.Photo} // Replace with the correct key for the photo URL in your data
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      borderRadius: "50%",
-                    }}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-          <Typography
-            variant="subtitle1"
-            component="div"
-            sx={{ marginTop: "7%", marginLeft: "5%", textAlign: "center" }}
-          >
-            {researcher.Name}
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            component="div"
-            sx={{ marginLeft: "5%", textAlign: "center" }}
-          >
-            {researcher.Role}
-          </Typography>
-        </Grid>
-      ))}
-
-      <Dialog open={Boolean(selectedResearcher)} onClose={handleCloseModal}>
-        {selectedResearcher && (
-          <div
-            sx={{
-              height: "100%",
-              marginTop: "5%",
-            }}
-          >
-            <DialogContent
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center", // Center the content vertically
-                height: "100%",
-                backgroundColor: "#E5E6E7", // Set the background color for the content area
-
-                // Set the container height to occupy the full dialog height
-              }}
-            >
-              <div
-                style={{
-                  width: "100%", // Adjust the width as needed
-                  height: "100%", // Adjust the width as needed
-                  paddingBottom: "90%", // Create a square container using padding
+        {data[selectedSheetIndex].data.map((researcher, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+              <Card
+                onClick={() => handleCardClick(researcher)}
+                sx={{
+                  borderRadius: "50%",
+                  width: "40vh",
+                  height: "40vh",
+                  marginTop: "20%",
+                  textAlign: "center",
+                  marginLeft: isMobile ? "5%" : "20%",
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
-                <img
-                  src={selectedResearcher.Photo}
-                  alt="Researcher"
-                  style={{
-                    width: "100%",
-                    objectFit: "cover",
-                    position: "absolute",
-                    right: "1",
-                  }}
-                />
-              </div>
+                <CardContent>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <img
+                      src={researcher.Photo} // Replace with the correct key for the photo URL in your data
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+            <Typography
+              variant="subtitle1"
+              component="div"
+              sx={{ marginTop: "7%", marginLeft: "5%", textAlign: "center" }}
+            >
+              {researcher.Name}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              component="div"
+              sx={{ marginLeft: "5%", textAlign: "center" }}
+            >
+              {researcher.Role}
+            </Typography>
+          </Grid>
+        ))}
 
-              <Typography
-                className="page-title"
-                variant="h2"
-                color="black"
+        <Dialog open={Boolean(selectedResearcher)} onClose={handleCloseModal}>
+          {selectedResearcher && (
+            <div
+              sx={{
+                height: "100%",
+                marginTop: "5%",
+              }}
+            >
+              <DialogContent
                 sx={{
-                  fontSize: {
-                    xs: "1.4rem", // Font size for extra-small screens (less than 600px)
-                    sm: "2rem", // Font size for small screens (600px and above)
-                    // Add more entries for other breakpoints if needed
-                  },                  fontWeight: 900,
-                  px: "5%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center", // Center the content vertically
+                  height: "100%",
+                  backgroundColor: "#E5E6E7", // Set the background color for the content area
+
+                  // Set the container height to occupy the full dialog height
                 }}
               >
-                {selectedResearcher.Name}
-              </Typography>
-              <Typography
-                className="page-title"
-                variant="h2"
-                color="black"
-                sx={{
-                  fontSize: "1.7rem",
-                  fontWeight: 400,
-                  px: "5%",
-                  display: { xs: "none", sm: "block" },
-                }}
-              >
-                {selectedResearcher.Role}
-              </Typography>
-              <Stack
-                direction="row"
-                spacing={2}
-                justifyContent="center"
-                sx={{ marginBottom: "1%" }}
-              >
-                <IconButton
-                  href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
-                  target="_blank"
-                  size="medium"
-                  sx={iconBtnStyle}
+                <div
+                  style={{
+                    width: "100%", // Adjust the width as needed
+                    height: "100%", // Adjust the width as needed
+                    paddingBottom: "90%", // Create a square container using padding
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
                 >
-                  <LinkedInIcon sx={{ color: "#ffffff" }} />
-                </IconButton>
-                <IconButton
-                  href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
-                  target="_blank"
-                  size="medium"
-                  sx={iconBtnStyle}
+                  <img
+                    src={selectedResearcher.Photo}
+                    alt="Researcher"
+                    style={{
+                      width: "100%",
+                      objectFit: "cover",
+                      position: "absolute",
+                      right: "1",
+                    }}
+                  />
+                </div>
+
+                <Typography
+                  className="page-title"
+                  variant="h2"
+                  color="black"
+                  sx={{
+                    fontSize: {
+                      xs: "1.4rem", // Font size for extra-small screens (less than 600px)
+                      sm: "2rem", // Font size for small screens (600px and above)
+                      // Add more entries for other breakpoints if needed
+                    },
+                    fontWeight: 900,
+                    px: "5%",
+                  }}
                 >
-                  <MailOutlineIcon sx={{ color: "#ffffff" }} />
-                </IconButton>
-              </Stack>
-              <Typography
-                className="page-title"
-                variant="h2"
-                color="black"
-                sx={{
-                  fontSize: "1rem",
-                  fontWeight: 400,
-                  px: "5%",
-                }}
-              >
-                <RenderBio bio = {selectedResearcher.Bio} /> 
-              </Typography>
-            </DialogContent>
-          </div>
-        )}
-      </Dialog>
-    </Grid>
+                  {selectedResearcher.Name}
+                </Typography>
+                <Typography
+                  className="page-title"
+                  variant="h2"
+                  color="black"
+                  sx={{
+                    fontSize: "1.7rem",
+                    fontWeight: 400,
+                    px: "5%",
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
+                  {selectedResearcher.Role}
+                </Typography>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent="center"
+                  sx={{ marginBottom: "1%" }}
+                >
+                  <IconButton
+                    href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
+                    target="_blank"
+                    size="medium"
+                    sx={iconBtnStyle}
+                  >
+                    <LinkedInIcon sx={{ color: "#ffffff" }} />
+                  </IconButton>
+                  <IconButton
+                    href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
+                    target="_blank"
+                    size="medium"
+                    sx={iconBtnStyle}
+                  >
+                    <MailOutlineIcon sx={{ color: "#ffffff" }} />
+                  </IconButton>
+                </Stack>
+                <Typography
+                  className="page-title"
+                  variant="h2"
+                  color="black"
+                  sx={{
+                    fontSize: "1rem",
+                    fontWeight: 400,
+                    px: "5%",
+                  }}
+                >
+                  <RenderBio bio={selectedResearcher.Bio} />
+                </Typography>
+              </DialogContent>
+            </div>
+          )}
+        </Dialog>
+      </Grid>
     </Container>
   );
 }

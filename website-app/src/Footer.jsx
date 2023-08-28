@@ -39,6 +39,10 @@ export default function Footer() {
                 align="center"
                 sx={{
                   fontFamily: "sans-serif",
+                 fontSize: {
+                    xs: "0.8rem", // Font size for extra-small screens (less than 600px)
+                    sm: "1.2rem", // Font size for small screens (600px and above)
+                 }
                 }}
               >
                 LOCATION
@@ -48,13 +52,18 @@ export default function Footer() {
                 align="center"
                 sx={{
                   fontFamily: "sans-serif",
-                }}
-              >
+                  fontSize: {
+                    xs: "0.7rem", // Font size for extra-small screens (less than 600px)
+                    sm: "1rem", // Font size for small screens (600px and above)
+                  }}}>
                 9500 Euclid Ave.Cleveland, OH 44195
               </Typography>
             </Grid>
             <Grid item xs={12} sm={3}>
-              <Typography variant="body1" align="center">
+              <Typography variant="body1" align="center"sx = {{                 fontSize: {
+                    xs: "0.7rem", // Font size for extra-small screens (less than 600px)
+                    sm: "1rem", // Font size for small screens (600px and above)
+                  }}}>
                 Cardiovascular Innovation <br/> 
                 Research Center
               </Typography>
@@ -89,7 +98,10 @@ export default function Footer() {
               </Stack>
             </Grid>
             <Grid item xs={12} sm={3}>
-              <Typography variant="body1" align="center">
+              <Typography variant="body1" align="center" sx = {{                 fontSize: {
+                    xs: "0.7rem", // Font size for extra-small screens (less than 600px)
+                    sm: "1rem", // Font size for small screens (600px and above)
+                  }}}>
                   (216) 636-5373 <br />
                   CIRC@ccf.org
                 </Typography>

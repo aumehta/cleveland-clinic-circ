@@ -218,7 +218,7 @@ function Home() {
           )}
         </Grid>
       </Grid>
-      <div style={containerText}>
+      <Grid style={containerText}>
         <Paper
           square
           elevation={2}
@@ -250,7 +250,7 @@ function Home() {
             scientific knowledge as they are currently known.
           </Typography>
         </Paper>
-      </div>
+      </Grid>
       <animated.div style={{ opacity: scrollYProgress, width: "100%"}}>
       <div style = {{width: "100%"}}> 
       <Grid container alignItems="center">
@@ -348,12 +348,12 @@ function Home() {
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
           <Card
             sx={{
-              width: "350px",
-              height: "350px",
+              width: isMobile ? "30vh" : "50vh",
+              height: isMobile ? "30vh" : "50vh",
               marginTop: "10%",
               marginBottom: "10%", 
               textAlign: "center",
-              marginLeft: isMobile ? "10%" : "20%",
+              marginLeft:  "20%",
               overflow: "hidden",
               display: "flex", // Use flexbox for centering content
               justifyContent: "center", // Center content horizontally
@@ -392,12 +392,12 @@ function Home() {
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
           <Card
             sx={{
-              width: "350px",
-              height: "350px",
+              width: isMobile ? "30vh" : "50vh",
+              height: isMobile ? "30vh" : "50vh",
               marginTop: "10%",
               marginBottom: "10%",
               textAlign: "center",
-              marginLeft: isMobile ? "10%" : "20%",
+              marginLeft: "20%",
               position: "relative",
               overflow: "hidden",
               display: "flex", // Use flexbox for centering content
@@ -437,12 +437,12 @@ function Home() {
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
           <Card
             sx={{
-              width: "350px",
-              height: "350px",
+              width: isMobile ? "30vh" : "50vh",
+              height: isMobile ? "30vh" : "50vh",
               marginTop: "10%",
               marginBottom: "10%",
               textAlign: "center",
-              marginLeft: isMobile ? "10%" : "20%",
+              marginLeft: "20%",
               position: "relative",
               overflow: "hidden",
               display: "flex", // Use flexbox for centering content
