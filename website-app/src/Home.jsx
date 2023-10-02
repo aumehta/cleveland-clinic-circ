@@ -3,6 +3,8 @@ import * as React from "react";
 import homepage from "./Photos/homepage.jpg";
 import ReactPlayer from "react-player";
 import clevelandLogo from "./Photos/clinicImage-removebg-preview.png";
+import { Link } from "react-router-dom";
+
 import {
   AppBar,
   Toolbar,
@@ -183,9 +185,11 @@ function Home() {
               </div>
             </Slide>
             <div style={btnContainerStyle}>
+            <Link to='/research'>
               <Button endIcon={<ArrowForwardIosIcon />} sx={btnStyle}>
                 LEARN MORE
               </Button>
+              </Link>
             </div>
             {(isMobile || isPad) && (
               <div style={videoContainerStyleMobile}>
@@ -199,7 +203,9 @@ function Home() {
                   style={videoStyleMobile}
                   muted
                 />
+                    
               </div>
+              
             )}
           </div>
           {!isMobile && !isPad && (
@@ -218,6 +224,7 @@ function Home() {
           )}
         </Grid>
       </Grid>
+      <p style = {{textAlign: 'center'}}> hi </p>
       <Grid style={containerText}>
         <Paper
           square
@@ -307,6 +314,8 @@ function Home() {
             marginTop: isMobile ? "0%" : "-5%",
           }}
         >
+         <Link to='/about'>
+
           <Button
             endIcon={<ArrowForwardIosIcon />}
             sx={{
@@ -323,6 +332,7 @@ function Home() {
           >
             ABOUT US
           </Button>
+          </Link>
         </div>
       </Grid>
       </div>

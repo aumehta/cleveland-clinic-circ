@@ -24,8 +24,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 export default function Footer() {
   const iconBtnStyle = {
     backgroundColor: "#ffffff",
+    marginTop: "2%",
     "&:hover": {
-      backgroundColor: "#7954A1",
+      backgroundColor: "#D9D9D9",
     },
   };
   return (
@@ -54,7 +55,7 @@ export default function Footer() {
                   fontFamily: "sans-serif",
                   fontSize: {
                     xs: "0.7rem", // Font size for extra-small screens (less than 600px)
-                    sm: "1rem", // Font size for small screens (600px and above)
+                    sm: "1.2rem", // Font size for small screens (600px and above)
                   }}}>
                 9500 Euclid Ave.Cleveland, OH 44195
               </Typography>
@@ -62,7 +63,7 @@ export default function Footer() {
             <Grid item xs={12} sm={3}>
               <Typography variant="body1" align="center"sx = {{                 fontSize: {
                     xs: "0.7rem", // Font size for extra-small screens (less than 600px)
-                    sm: "1rem", // Font size for small screens (600px and above)
+                    sm: "1.2rem", // Font size for small screens (600px and above)
                   }}}>
                 Cardiovascular Innovation <br/> 
                 Research Center
@@ -71,24 +72,7 @@ export default function Footer() {
             <Grid item xs={12} sm={3}>
               <Stack direction="row" spacing={2}  justifyContent="center">
                 <IconButton
-                  href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
-                  target="_blank"
-                  size="medium"
-                  sx={iconBtnStyle}
-                >
-                  <FacebookIcon sx={{ color: "#000000" }} />
-                </IconButton>
-
-                <IconButton
-                  href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
-                  target="_blank"
-                  size="medium"
-                  sx={iconBtnStyle}
-                >
-                  <LinkedInIcon sx={{ color: "#000000" }} />
-                </IconButton>
-                <IconButton
-                  href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
+                  href="https://twitter.com/chrisnguyenphd?lang=en"
                   target="_blank"
                   size="medium"
                   sx={iconBtnStyle}
@@ -100,7 +84,7 @@ export default function Footer() {
             <Grid item xs={12} sm={3}>
               <Typography variant="body1" align="center" sx = {{                 fontSize: {
                     xs: "0.7rem", // Font size for extra-small screens (less than 600px)
-                    sm: "1rem", // Font size for small screens (600px and above)
+                    sm: "1.2rem", // Font size for small screens (600px and above)
                   }}}>
                   (216) 636-5373 <br />
                   CIRC@ccf.org

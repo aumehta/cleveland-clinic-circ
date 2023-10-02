@@ -389,29 +389,6 @@ function About() {
                 >
                   {selectedResearcher.Role}
                 </Typography>
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  justifyContent="center"
-                  sx={{ marginBottom: "1%" }}
-                >
-                  <IconButton
-                    href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
-                    target="_blank"
-                    size="medium"
-                    sx={iconBtnStyle}
-                  >
-                    <LinkedInIcon sx={{ color: "#ffffff" }} />
-                  </IconButton>
-                  <IconButton
-                    href="https://instagram.com/cwru.acmw?igshid=MWI4MTIyMDE="
-                    target="_blank"
-                    size="medium"
-                    sx={iconBtnStyle}
-                  >
-                    <MailOutlineIcon sx={{ color: "#ffffff" }} />
-                  </IconButton>
-                </Stack>
                 <Typography
                   className="page-title"
                   variant="h2"
